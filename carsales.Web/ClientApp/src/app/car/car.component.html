@@ -1,0 +1,67 @@
+<div class="jumbotron">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h2>Create Car</h2>
+          <form [formGroup]="createCarForm" (ngSubmit)="createCar()">
+            <div class="form-group">
+              <label>Make</label>
+              <input type="text" maxlength="100" formControlName="make" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.make.errors }" />
+              <div *ngIf="submitted && controls.make.errors" class="invalid-feedback">
+                <div *ngIf="controls.make.errors.required">Make is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label>Model</label>
+                <input type="text" maxlength="100" formControlName="model" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.model.errors }" />
+                <div *ngIf="submitted && controls.model.errors" class="invalid-feedback">
+                  <div *ngIf="controls.model.errors.required">Model is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Engine (cc)</label>
+                <input type="number" maxlength="6" formControlName="engineSize" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.engineSize.errors }" />
+                <div *ngIf="submitted && controls.engineSize.errors" class="invalid-feedback">
+                  <div *ngIf="controls.engineSize.errors.required">Engine size is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Number of doors</label>
+                <input type="number" maxlength="6" formControlName="numberOfDoors" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.numberOfDoors.errors }" />
+                <div *ngIf="submitted && controls.numberOfDoors.errors" class="invalid-feedback">
+                  <div *ngIf="controls.numberOfDoors.required">Number of Doors is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Number of wheels</label>
+                <input type="number" maxlength="6" formControlName="numberOfWheels" class="form-control" [ngClass]="{ 'is-invalid': submitted && controls.numberOfWheels.errors }" />
+                <div *ngIf="submitted && controls.numberOfWheels.errors" class="invalid-feedback">
+                  <div *ngIf="controls.numberOfWheels.required">Number of Wheels is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Body Type</label>
+                <select class="form-control" formControlName="bodyType">
+                    <option id="bodyType" [value]="null">Select a Body type</option>
+                    <option id="bodyType" *ngFor="let bodyTypeItem of bodyTypesArray" [ngValue]="bodyTypeItem">
+                {{BodyTypeName[bodyTypeItem] }}
+                </option>
+                </select>
+                <div *ngIf="submitted && controls.bodyType.errors" class="invalid-feedback">
+                  <div *ngIf="controls.bodyType.required">Please select Body Type</div>
+                </div>
+              </div>
+            
+            <div class="form-group">
+              <button class="btn btn-primary">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
