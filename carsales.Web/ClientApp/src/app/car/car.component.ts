@@ -4,6 +4,8 @@ import { BodyTypeName } from '../enums/body-type-map-enum';
 import { VehicleService } from '../services/vehicle.service';
 import { Car } from '../models/car.model';
 import { BodyType } from '../enums/body-type.enum';
+import { VehicleType } from '../enums/vehicle-type.enum';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-car',
@@ -40,7 +42,8 @@ export class CarComponent implements OnInit {
   }
 
   private CreateNewCar(car: Car) {
-    console.log(car);
-      this.vehicleService.createCar(car);
+    car.vehicleType = VehicleType.Car; // Explicit Default Value
+    car.id = Guid.create().toString();//Guid
+    this.vehicleService.createCar(car).subscribe(data => { alert("Succesfully Created Car") }, Error => { alert("Failed while creating car") });
   }
 }

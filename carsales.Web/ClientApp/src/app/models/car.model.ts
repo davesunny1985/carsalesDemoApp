@@ -1,10 +1,9 @@
 import { BodyType } from '../enums/body-type.enum';
 import { Vehicle } from './vehicle.model';
-import { Guid } from 'guid-typescript';
 import { VehicleType } from '../enums/vehicle-type.enum';
 
 export class Car implements Vehicle {
-    id: Guid;
+    id: string;
     vehicleType: VehicleType;
     make: string;
     model: string;
